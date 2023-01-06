@@ -4,4 +4,15 @@ body {
   background-color: $background-color;
   font-family: 'Open Sans', sans-serif;
   scroll-behavior: smooth;
+  padding: 20px;
+  color: white;
+}
+
+.selected {
+  outline: 1px solid red;
+}
+
+.selection {
+  padding: 5px;
+  width: fit-content;
 }
