@@ -4,6 +4,8 @@ import Input from './components/Input/Input'
 import Selections from './components/Selections/Selections'
 
 import { IoMailUnreadOutline } from 'react-icons/io5'
+import LoaderPlaceHolder from './components/Loaders/LoaderPlaceHolder'
+import LoaderHolder from './components/Loaders/LoaderPlaceHolder'
 
 const App = () => {
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -12,8 +14,18 @@ const App = () => {
 
   return (
     <div className="main">
-      {/* <Button ref={buttonRef}>Hello world</Button>
-      <Selections
+      {/* <Button
+        className="qzdqzdqzd"
+        suffixElement={<p>Hello</p>}
+        prefixElement={<p>World</p>}
+        ref={buttonRef}
+        loading
+      >
+        Hello world
+      </Button> */}
+      <LoaderHolder />
+
+      {/* <Selections
         selections={selections}
         setSelections={setSelections}
         items={[

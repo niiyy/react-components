@@ -10,6 +10,20 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   suffixElement?: JSX.Element
 }
 
+const Input = forwardRef(
+  (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
+    const { prefixElement, suffixElement, ...rest } = props
+
+    return (
+      <div style={inputWrapperStyle} className="input-wrapper">
+        {prefixElement}
+        <input style={inputStyle} ref={ref} {...rest} />
+        {suffixElement}
+      </div>
+    )
+  }
+)
+
 const inputWrapperStyle: CSSProperties = {
   width: 'fit-content',
   padding: '10px',
@@ -27,19 +41,5 @@ const inputStyle: CSSProperties = {
   color: 'white',
   outline: 'none',
 }
-
-const Input = forwardRef(
-  (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
-    const { prefixElement, suffixElement, ...rest } = props
-
-    return (
-      <div style={inputWrapperStyle} className="input-wrapper">
-        {prefixElement}
-        <input style={inputStyle} ref={ref} {...rest} />
-        {suffixElement}
-      </div>
-    )
-  }
-)
 
 export default Input

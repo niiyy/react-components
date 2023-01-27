@@ -1,21 +1,34 @@
-import { ForwardedRef, forwardRef } from 'react'
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef } from 'react'
 
-export interface ButtonProps {
+export type IButtonTypes = 'primary' | 'danger' | 'succes'
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string | JSX.Element | JSX.Element[]
 
-  prefix?: JSX.Element
-  suffix?: JSX.Element
+  prefixElement?: JSX.Element
+  suffixElement?: JSX.Element
+  bType?: IButtonTypes
+  loading?: boolean
 }
 
 const Button = forwardRef(
-  (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
-    const { children, prefix, suffix } = props
+  (props: IButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+    const {
+      children,
+      prefixElement,
+      suffixElement,
+      className,
+      bType = 'primary',
+      loading,
+    } = props
 
     return (
-      <button ref={ref}>
-        {prefix}
+      <button
+        className={`btn ${className} ${bType} ${loading ? 'loading' : ''}`}
+        ref={ref}
+      >
+        {prefixElement}
         {children}
-        {suffix}
+        {suffixElement}
       </button>
     )
   }

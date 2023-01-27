@@ -7,8 +7,8 @@ export interface SelectionProps {
   onClick: (value: string) => void
 }
 
-export type SelectionWithoutOnClick = Omit<SelectionProps, 'onClick'>
-
+export interface SelectionWithoutOnClick
+  extends Omit<SelectionProps, 'onClick'> {}
 export interface SelectionsType {
   isUnique?: boolean
   items: SelectionWithoutOnClick[]
